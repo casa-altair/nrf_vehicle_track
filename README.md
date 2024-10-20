@@ -21,6 +21,7 @@ Vehicle Tracking System using NRF24L01 RFs as mesh communication
 - If there is some disconnection, this code, will auto-connect with different channel or node.
 - This application will only send data via mesh to Hub Node.
 
-| Version | Description                                            |
-| :-----: | :----------------------------------------------------- |
-| 1.0     | Developed application for both                         |
+| Version | Description                                              |
+| :-----: | :------------------------------------------------------- |
+| 1.0     | Developed application for both hub and client on arduino |
+| 1.1     | Developed application for python based data receive      |

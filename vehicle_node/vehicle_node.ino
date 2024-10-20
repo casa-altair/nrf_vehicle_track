@@ -9,7 +9,7 @@ RF24Network network(radio);
 RF24Mesh mesh(radio, network);
 
 // Truck node ID (change this for each truck)
-#define truck_no 1
+#define truck_no 5
 
 // Structure to hold the truck data
 struct TruckData {
@@ -53,9 +53,9 @@ void loop() {
 
   // Prepare truck data
   TruckData truck;
-  truck.truck_id = truck_no;  // Unique truck ID
-  truck.lat = 37.7749;        // Example latitude (replace with actual GPS data)
-  truck.lon = -122.4194;      // Example longitude (replace with actual GPS data)
+  truck.truck_id = truck_no;                                      // Unique truck ID
+  truck.lat = random(-90 * 1000000, 90 * 1000000) / 1000000.0;    // Example latitude (replace with actual GPS data)
+  truck.lon = random(-180 * 1000000, 180 * 1000000) / 1000000.0;  // Example longitude (replace with actual GPS data)
 
   // Send truck data to the master node every second
   if (millis() - displayTimer >= 1000) {
