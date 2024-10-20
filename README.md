@@ -25,3 +25,4 @@ Vehicle Tracking System using NRF24L01 RFs as mesh communication
 | :-----: | :------------------------------------------------------- |
 | 1.0     | Developed application for both hub and client on arduino |
 | 1.1     | Developed application for python based data receive      |
+| 1.2     | Added channel number to app.py                           |
