@@ -1,5 +1,6 @@
 import struct
 import time
+import csv
 from pyrf24 import RF24, RF24Network, RF24Mesh, RF24_PA_MIN
 radio = RF24(22, 0)
 network = RF24Network(radio)
@@ -7,6 +8,8 @@ mesh = RF24Mesh(radio, network)
 mesh.setNodeID(0)
 radio.begin()
 radio.setPALevel(RF24_PA_MIN, 0)
+
+CSV_FILE = "/home/casaaltair/nrf24l01_com/gps_data.csv"
 
 current_millis = 0;
 
@@ -33,7 +36,15 @@ try:
             # channel_no = header.channel
             current_channel = radio.getChannel()
             truck_id, lat, lon = parse_truck_data(payload)
-            print(f"Ch: {current_channel}, Truck ID: {truck_id}, Latitude: {lat}, Longitude: {lon}")
+            this_data = f"Truck ID: {truck_id}, Latitude: {lat}, Longitude: {lon}"
+            print("====", this_data)
+            
+            with open(CSV_FILE, mode='a', newline='', encoding="utf-8") as file:
+                    try:
+                        writer = csv.writer(file)
+                        writer.writerow([truck_id, lat, lon])
+                    except Exception as error:
+                        print(error)
 except KeyboardInterrupt:
     print("Powering down radio and exiting.")
     radio.powerDown()
