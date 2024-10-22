@@ -52,11 +52,16 @@ void setup() {
   if (!mesh.begin()) {
     if (radio.isChipConnected()) {
       do {
+        Serial.println(F("Could not connect to network.\nConnecting to the mesh..."));
+
       } while (mesh.renewAddress() == MESH_DEFAULT_ADDRESS);
     } else {
+      Serial.println(F("Radio hardware not responding."));
       while (1) {}
     }
   }
+
+  Serial.println("Okay starting mesh");
 }
 
 void loop() {
@@ -66,10 +71,12 @@ void loop() {
     char gpsData = gps_serial.read();  // Read each data
     if (gps.encode(gpsData)) {
       if (gps.location.isValid()) {
+        // Serial.println(gps.location.lat());
+        // Serial.println(gps.location.lng());
         if (millis() - gps_print_timeout > truck_send_data_time) {
           gps_print_timeout = millis();
 
-          // Prepare truck dats
+          // // Prepare truck dats
           TruckData truck;
           truck.truck_id = truck_no;
           truck.lat = gps.location.lat();

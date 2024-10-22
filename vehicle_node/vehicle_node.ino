@@ -9,7 +9,7 @@ RF24Network network(radio);
 RF24Mesh mesh(radio, network);
 
 // Truck node ID (change this for each truck)
-#define truck_no 5
+#define truck_no 1
 
 // Structure to hold the truck data
 struct TruckData {
