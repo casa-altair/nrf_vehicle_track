@@ -28,3 +28,4 @@ Vehicle Tracking System using NRF24L01 RFs as mesh communication
 | 1.2     | Added channel number to app.py                           |
 | 1.03    | Integration of GPS module with arduino                   |
 | 1.04    | Added CV format                                          |
+| 1.05    | Updated code for optimization                            |

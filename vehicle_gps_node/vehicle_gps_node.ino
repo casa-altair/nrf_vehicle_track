@@ -67,7 +67,7 @@ void setup() {
 void loop() {
   mesh.update();  // Update current mesh network
 
-  while (gps_serial.available() > 0) {
+  if (gps_serial.available() > 0) {
     char gpsData = gps_serial.read();  // Read each data
     if (gps.encode(gpsData)) {
       if (gps.location.isValid()) {
@@ -104,3 +104,5 @@ void loop() {
     }
   }
 }
+
+// Truck ID: 5, Latitude: 20.237590789794922, Longitude: 85.81378936767578
